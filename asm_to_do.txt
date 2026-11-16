@@ -1,0 +1,6 @@
+1. debug and test int_selection_sort
+3. do exercise from chp 15
+4. do exercise from chp 16
+5. do exercise from chp 17
+9. write simple bash shell
+10. write simple web server

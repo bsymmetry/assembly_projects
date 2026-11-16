@@ -1,0 +1,30 @@
+#--------------------------------------------------
+# Debugging and Tests File for average_macro.asm
+#--------------------------------------------------
+
+start
+break last
+run
+echo \n\n
+echo average with [4,5,2,-3,1] (1):
+x/uw &ave1
+echo average with [2,6,3,-2,1,8,19] (5):
+x/uw &ave2
+
+start
+set &list1 = 2,2,2,2,2
+set &list2 = 1
+set &len2  = 1
+continue
+echo \n\n
+echo average with [2,2,2,2,2] (2):
+x/5uw &list1
+x/uw &len1
+x/uw &ave1
+echo average with [1] (1):
+x/uw &list2
+x/uw &len2
+x/uw &ave2
+continue
+quit
+

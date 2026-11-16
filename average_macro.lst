@@ -1,0 +1,87 @@
+     1                                 %line 1+1 average_macro.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 %line 24+1 average_macro.asm
+    10                                 
+    11                                 
+    12                                 
+    13                                 
+    14                                 [section .data]
+    15                                 
+    16                                 
+    17                                 
+    18                                 
+    19                                 EXIT_SUCCESS equ 0
+    20                                 SYS_exit equ 60
+    21                                 
+    22                                 
+    23                                 
+    24                                 [section .data]
+    25 00000000 040000000500000002-    list1 dd 4, 5, 2, -3, 1
+    26 00000000 000000FDFFFFFF0100-
+    27 00000000 0000               
+    28 00000014 05000000               len1 dd 5
+    29 00000018 00000000               ave1 dd 0
+    30                                 
+    31 0000001C 020000000600000003-    list2 dd 2, 6, 3, -2, 1, 8, 19
+    32 0000001C 000000FEFFFFFF0100-
+    33 0000001C 000008000000130000-
+    34 0000001C 00                 
+    35 00000038 07000000               len2 dd 7
+    36 0000003C 00000000               ave2 dd 0
+    37                                 
+    38                                 
+    39                                 [section .text]
+    40                                 [global _start]
+    41                                 _start:
+    42                                 
+    43                                 
+    44                                 
+    45                                 
+    46 00000000 B800000000              mov eax, 0
+    47                                 %line 55+0 average_macro.asm
+    48 00000005 8B0C25[00000000]        mov ecx, dword [len1]
+    49 0000000C 49C7C400000000          mov r12, 0
+    50 00000013 488D1C25[00000000]      lea rbx, [list1]
+    51                                 
+    52                                 ..@4.sumLoop:
+    53 0000001B 420304A3                add eax, dword [rbx+r12*4]
+    54 0000001F 49FFC4                  inc r12
+    55 00000022 E2F5                    loop ..@4.sumLoop
+    56                                 
+    57 00000024 99                      cdq
+    58 00000025 F73C25[00000000]        idiv dword [len1]
+    59 0000002C 890425[00000000]        mov dword [ave1], eax
+    60                                 
+    61                                 %line 56+1 average_macro.asm
+    62                                 
+    63 00000033 B800000000              mov eax, 0
+    64                                 %line 57+0 average_macro.asm
+    65 00000038 8B0C25[00000000]        mov ecx, dword [len2]
+    66 0000003F 49C7C400000000          mov r12, 0
+    67 00000046 488D1C25[00000000]      lea rbx, [list2]
+    68                                 
+    69                                 ..@5.sumLoop:
+    70 0000004E 420304A3                add eax, dword [rbx+r12*4]
+    71 00000052 49FFC4                  inc r12
+    72 00000055 E2F5                    loop ..@5.sumLoop
+    73                                 
+    74 00000057 99                      cdq
+    75 00000058 F73C25[00000000]        idiv dword [len2]
+    76 0000005F 890425[00000000]        mov dword [ave2], eax
+    77                                 
+    78                                 %line 58+1 average_macro.asm
+    79                                 
+    80                                 
+    81                                 
+    82                                 
+    83                                 last:
+    84 00000066 48C7C03C000000          mov rax, SYS_exit
+    85 0000006D 48C7C700000000          mov rdi, EXIT_SUCCESS
+    86 00000074 0F05                    syscall
+    87                                 

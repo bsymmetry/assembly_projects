@@ -1,0 +1,20 @@
+#---------------------------------
+# Debugger Input file
+#---------------------------------
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file list_sum_log.txt
+set logging overwrite
+set logging enable
+set prompt
+echo ---------------------------------------\n
+echo display variables \n
+echo \n
+echo sum:
+x/uw &sum
+echo \n\n
+set logging enable off
+#quit

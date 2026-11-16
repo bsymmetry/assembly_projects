@@ -1,0 +1,16 @@
+(gdb) ---------------------------------
+display variables:
+
+taMin:0x402162:	246600
+taMax:0x402166:	23404194
+taSum:0x40216a:	210027018
+taAve:0x40216e:	4200540
+volMin:0x402172:	404466
+volMax:0x402176:	49397322
+volSum:0x40217a:	355947109
+volAve:0x40217e:	7118942
+
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+

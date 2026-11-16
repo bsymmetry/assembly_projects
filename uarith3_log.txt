@@ -1,0 +1,47 @@
+----------------------------------------------
+display variables 
+
+"dNum1"0x402000:	400000
+"dNum2"0x402004:	300000
+"dNum3"0x402008:	200000
+"dNum4"0x40200c:	100000
+"qNum1"0x402010:	10000000
+
+"dAns1 = dNum1 + dNum2"
+0x402018:	700000
+
+"dAns2 = dNum1 + dNum3"
+0x40201c:	600000
+
+"dAns3 = dNum3 + dNum4"
+0x402020:	300000
+
+"dAns6 = dNum1 - dNum2"
+0x402024:	100000
+
+"dAns7 = dNum1 - dNum3"
+0x402028:	200000
+
+"dAns8 = dNum2 - dNum4"
+0x40202c:	200000
+
+"qAns11 = dNum1 * dNum3"
+0x402030:	80000000000
+
+"qAns12 = dNum2 * dNum3"
+0x402038:	90000000000
+
+"qAns13 = dNum2 * dNum4"
+0x402040:	30000000000
+
+"dAns16 = dNum1 / dNum2"
+0x402048:	1
+
+"dAns17 = dNum3 / dNum4"
+0x40204c:	0
+
+"dAns18 = qNum1 / dNum4" 
+0x402050:	0
+0x402054:	0
+
+

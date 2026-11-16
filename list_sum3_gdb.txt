@@ -1,0 +1,23 @@
+#-----------------------------
+# Debugger File for List_sum3
+#_____________________________
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file list_sum3_log.txt
+set logging overwrite
+set logging enabled on
+set prompt
+echo ------------------------\n
+echo \n\n
+echo solutions for lst[234, 5643, 768, 905]:
+echo \n
+echo middle:
+x/uw &middle
+echo middle3:
+x/uw &middle3
+echo \n\n
+set logging enabled off
+quit

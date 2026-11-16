@@ -1,0 +1,22 @@
+#----------------------------------
+# Debugger Input File
+#----------------------------------
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file square_log.txt
+set logging overwrite
+set logging enable
+set prompt
+echo ----------------------------------------------\n
+echo display variables \n
+echo \n
+x/ug &squareOfSums
+x/xg &squareOfSums
+echo \n
+echo \n\n
+set logging enable off
+#quit
+

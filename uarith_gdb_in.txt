@@ -1,0 +1,66 @@
+#----------------------------------
+# Debugger Input File
+#----------------------------------
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file uarith3_log.txt
+set logging overwrite
+set logging enable
+set prompt
+echo ----------------------------------------------\n
+echo display variables \n
+echo \n
+echo "dNum1"
+x/uw &dNum1
+echo "dNum2"
+x/uw &dNum2
+echo "dNum3"
+x/uw &dNum3
+echo "dNum4"
+x/uw &dNum4
+echo "qNum1"
+x/ug &qNum1
+echo \n
+echo "dAns1 = dNum1 + dNum2"\n
+x/uw &dAns1
+echo \n
+echo "dAns2 = dNum1 + dNum3"\n
+x/uw &dAns2
+echo \n
+echo "dAns3 = dNum3 + dNum4"\n
+x/uw &dAns3
+echo \n
+echo "dAns6 = dNum1 - dNum2"\n
+x/uw &dAns6
+echo \n
+echo "dAns7 = dNum1 - dNum3"\n
+x/uw &dAns7
+echo \n
+echo "dAns8 = dNum2 - dNum4"\n
+x/uw &dAns8
+echo \n
+echo "qAns11 = dNum1 * dNum3"\n
+x/ug &qAns11
+echo \n
+echo "qAns12 = dNum2 * dNum2"\n
+x/ug &qAns12
+echo \n
+echo "qAns13 = dNum2 * dNum4"\n
+x/ug &qAns13
+echo \n
+echo "dAns16 = dNum1 / dNum2"\n
+x/uw &dAns16
+echo\n
+echo "dAns17 = dNum3 / dNum4"\n
+x/uw &dAns17
+echo \n
+echo "dAns18 = qNum1 / dNum4" \n
+x/uw &dAns18
+x/uw &dRem18
+echo \n\n
+set logging enable off
+#quit
+

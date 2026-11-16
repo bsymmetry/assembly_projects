@@ -1,0 +1,26 @@
+#---------------------------------
+# Debugger Input file
+#---------------------------------
+
+echo \n\n
+break last
+run
+set pagination off
+set logging file list_sum2_log.txt
+set logging overwrite
+set logging enable
+set prompt
+echo ---------------------------------------\n
+echo display variables \n
+echo \n
+echo sum:
+x/uw &sum
+echo min:
+x/uw &min
+echo max:
+x/uw &max
+echo average:
+x/uw &ave
+echo \n\n
+set logging enable off
+#quit

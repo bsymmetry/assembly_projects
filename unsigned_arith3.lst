@@ -1,0 +1,135 @@
+     1                                 %line 1+1 unsigned_arith3.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 [section .data]
+    10                                 
+    11                                 
+    12                                 
+    13                                 
+    14                                 SUCCESS equ 0
+    15                                 SYS_exit equ 60
+    16                                 
+    17                                 
+    18                                 
+    19                                 
+    20 00000000 801A0600               dNum1 dd 400000
+    21 00000004 E0930400               dNum2 dd 300000
+    22 00000008 400D0300               dNum3 dd 200000
+    23 0000000C A0860100               dNum4 dd 100000
+    24 00000010 8096980000000000       qNum1 dq 10000000
+    25 00000018 00000000               dAns1 dd 0
+    26 0000001C 00000000               dAns2 dd 0
+    27 00000020 00000000               dAns3 dd 0
+    28 00000024 00000000               dAns6 dd 0
+    29 00000028 00000000               dAns7 dd 0
+    30 0000002C 00000000               dAns8 dd 0
+    31 00000030 0000000000000000       qAns11 dq 0
+    32 00000038 0000000000000000       qAns12 dq 0
+    33 00000040 0000000000000000       qAns13 dq 0
+    34 00000048 00000000               dAns16 dd 0
+    35 0000004C 00000000               dAns17 dd 0
+    36 00000050 00000000               dAns18 dd 0
+    37 00000054 00000000               dRem18 dd 0
+    38                                 
+    39                                 
+    40                                 
+    41                                 
+    42                                 [section .text]
+    43                                 [global _start]
+    44                                 _start:
+    45                                 
+    46                                 
+    47 00000000 4831C0                 xor rax, rax
+    48 00000003 4831DB                 xor rbx, rbx
+    49                                 
+    50                                 
+    51 00000006 48C7C000000000         mov rax, 0
+    52 0000000D 8B0425[00000000]       mov eax, dword [dNum1]
+    53 00000014 030425[00000000]       add eax, dword [dNum2]
+    54 0000001B 890425[00000000]       mov dword [dAns1], eax
+    55                                 
+    56                                 
+    57 00000022 48C7C000000000         mov rax, 0
+    58 00000029 8B0425[00000000]       mov eax, dword [dNum1]
+    59 00000030 030425[00000000]       add eax, dword [dNum3]
+    60 00000037 890425[00000000]       mov dword [dAns2], eax
+    61                                 
+    62                                 
+    63 0000003E 48C7C000000000         mov rax, 0
+    64 00000045 8B0425[00000000]       mov eax, dword [dNum3]
+    65 0000004C 030425[00000000]       add eax, dword [dNum4]
+    66 00000053 890425[00000000]       mov dword [dAns3], eax
+    67                                 
+    68                                 
+    69 0000005A 48C7C000000000         mov rax, 0
+    70 00000061 8B0425[00000000]       mov eax, dword [dNum1]
+    71 00000068 2B0425[00000000]       sub eax, dword [dNum2]
+    72 0000006F 890425[00000000]       mov dword [dAns6], eax
+    73                                 
+    74                                 
+    75 00000076 48C7C000000000         mov rax, 0
+    76 0000007D 8B0425[00000000]       mov eax, dword [dNum1]
+    77 00000084 2B0425[00000000]       sub eax, dword [dNum3]
+    78 0000008B 890425[00000000]       mov dword [dAns7], eax
+    79                                 
+    80                                 
+    81 00000092 48C7C000000000         mov rax, 0
+    82 00000099 8B0425[00000000]       mov eax, dword [dNum2]
+    83 000000A0 2B0425[00000000]       sub eax, dword [dNum4]
+    84 000000A7 890425[00000000]       mov dword [dAns8], eax
+    85                                 
+    86                                 
+    87 000000AE 8B0425[00000000]       mov eax, dword [dNum3]
+    88 000000B5 99                     cdq
+    89 000000B6 4889C3                 mov rbx, rax
+    90 000000B9 8B0425[00000000]       mov eax, dword [dNum1]
+    91 000000C0 99                     cdq
+    92 000000C1 48F7E3                 mul rbx
+    93 000000C4 48890425[00000000]     mov qword [qAns11], rax
+    94                                 
+    95                                 
+    96 000000CC 8B0425[00000000]       mov eax, dword [dNum2]
+    97 000000D3 99                     cdq
+    98 000000D4 4889C3                 mov rbx, rax
+    99 000000D7 8B0425[00000000]       mov eax, dword [dNum2]
+   100 000000DE 99                     cdq
+   101 000000DF 48F7E3                 mul rbx
+   102 000000E2 48890425[00000000]     mov qword [qAns12], rax
+   103                                 
+   104                                 
+   105 000000EA 8B0425[00000000]       mov eax, dword [dNum4]
+   106 000000F1 99                     cdq
+   107 000000F2 4889C3                 mov rbx, rax
+   108 000000F5 8B0425[00000000]       mov eax, dword [dNum2]
+   109 000000FC 99                     cdq
+   110 000000FD 48F7E3                 mul rbx
+   111 00000100 48890425[00000000]     mov qword [qAns13], rax
+   112                                 
+   113                                 
+   114 00000108 48C7C000000000         mov rax, 0
+   115 0000010F 8B0425[00000000]       mov eax, dword [dNum1]
+   116 00000116 F73425[00000000]       div dword [dNum2]
+   117 0000011D 890425[00000000]       mov dword [dAns16], eax
+   118                                 
+   119                                 
+   120 00000124 48C7C000000000         mov rax, 0
+   121 0000012B 8B0425[00000000]       mov eax, dword [dNum3]
+   122 00000132 F73425[00000000]       div dword [dNum4]
+   123 00000139 890425[00000000]       mov dword [dAns17], eax
+   124                                 
+   125                                 
+   126 00000140 48C7C000000000         mov rax, 0
+   127 00000147 488B0425[00000000]     mov rax, qword [qNum1]
+   128 0000014F F73425[00000000]       div dword [dNum4]
+   129 00000156 890425[00000000]       mov dword [dAns18], eax
+   130 0000015D 891425[00000000]       mov dword [dRem18], edx
+   131                                 
+   132                                 
+   133 00000164 48C7C000000000         mov rax, SUCCESS
+   134 0000016B 48C7C73C000000         mov rdi, SYS_exit
+   135 00000172 0F05                   syscall

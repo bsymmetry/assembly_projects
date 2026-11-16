@@ -1,0 +1,24 @@
+#-------------------------------
+# Debug file for bubble_sort.asm
+#-------------------------------
+
+echo \n\n
+break 1
+commands
+  x/6uw &lst
+  continue
+end
+break last
+run
+set pagination off
+set logging file bubble_sort_log.txt
+set logging overwrite
+set logging enable on
+set prompt
+echo ------------------------------------\n
+echo display list:
+echo \n
+x/6uw &lst
+echo \n\n
+set logging enable off
+quit

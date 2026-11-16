@@ -1,0 +1,78 @@
+     1                                 %line 1+1 printString.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 [section .data]
+     7                                 
+     8                                 
+     9                                 
+    10                                 
+    11                                 LF equ 10
+    12                                 NULL equ 0
+    13                                 TRUE equ 1
+    14                                 FALSE equ 0
+    15                                 
+    16                                 EXIT_SUCCESS equ 0
+    17                                 
+    18                                 STDIN equ 0
+    19                                 STDOUT equ 1
+    20                                 STDERR equ 2
+    21                                 
+    22                                 SYS_read equ 0
+    23                                 SYS_write equ 1
+    24                                 SYS_open equ 2
+    25                                 SYS_close equ 3
+    26                                 SYS_exit equ 60
+    27                                 
+    28                                 
+    29                                 
+    30                                 
+    31 00000000 0A00                   newLine db LF, NULL
+    32                                 
+    33                                 
+    34                                 
+    35                                 
+    36                                 
+    37                                 
+    38                                 
+    39                                 
+    40                                 
+    41                                 
+    42                                 
+    43                                 
+    44                                 [global printString]
+    45                                 printString:
+    46 00000002 53                      push rbx
+    47                                 
+    48                                 
+    49                                 
+    50                                 
+    51 00000003 4889FB                  mov rbx, rdi
+    52 00000006 48C7C200000000          mov rdx, 0
+    53                                 strCountLoop:
+    54 0000000D 803B00                  cmp byte [rbx], NULL
+    55 00000010 7406                    je strCountDone
+    56 00000012 48FFC2                  inc rdx
+    57 00000015 48FFC3                  inc rbx
+    58 00000018 EBF1                    jmp strCountLoop
+    59                                 strCountDone:
+    60                                 
+    61 0000001A 4883FA00                cmp rdx, 0
+    62 0000001E 7411                    je prtDone
+    63                                 
+    64                                 
+    65                                 
+    66                                 
+    67 00000020 48C7C001000000          mov rax, SYS_write
+    68 00000027 4889FE                  mov rsi, rdi
+    69 0000002A 48C7C701000000          mov rdi, STDOUT
+    70 00000031 0F05                    syscall
+    71                                 
+    72                                 
+    73                                 
+    74                                 
+    75                                 prtDone:
+    76                                 
+    77 00000033 5B                      pop rbx
+    78 00000034 C3                      ret
